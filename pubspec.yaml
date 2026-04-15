@@ -60,11 +60,32 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/triptych.png
-  #   - images/a_dot_ham.jpeg
+     - assets/depart.jpeg
+     - assets/magnifi.jpeg
+     - assets/nueplex.jpeg
   fonts:
     - family: Pricedown
       fonts:
         - asset: assets/fonts/PricedownBl.otf
+    - family: diploma
+      fonts:
+        - asset: assets/fonts/diploma.ttf
+    - family: OldeEnglish
+      fonts:
+        - asset: assets/fonts/OldeEnglish.ttf
+    - family: Beckett
+      fonts:
+        - asset: assets/fonts/Beckett.ttf
+    - family: bankgothic-regular
+      fonts:
+        - asset: assets/fonts/bankgothic-regular.ttf
+    - family: fonnts.com-FuturaLT-Oblique
+      fonts:
+        - asset: assets/fonts/fonnts.com-FuturaLT-Oblique.ttf
+    - family: fonnts.com-FuturaLT-Light
+      fonts:
+        - asset: assets/fonts/fonnts.com-FuturaLT-Light.ttf
+        
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

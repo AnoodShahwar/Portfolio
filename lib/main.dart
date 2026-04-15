@@ -33,6 +33,13 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  void _previousPage() {
+    _controller.previousPage(
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,13 +49,20 @@ class _MyAppState extends State<MyApp> {
         body: PageView(
           controller: _controller,
           scrollDirection: Axis.vertical,
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             SplashScreen(onScrollDown: _nextPage),
-            AboutScreen(onScrollDown: _nextPage),
-            ProjectsScreen(onScrollDown: _nextPage),
-            SkillsScreen(onScrollDown: _nextPage),
-            CertificationsScreen(onScrollDown: _nextPage),
-            const ContactScreen(),
+            AboutScreen(onScrollDown: _previousPage, onScrollNext: _nextPage),
+            ProjectsScreen(
+              onScrollDown: _previousPage,
+              onScrollNext: _nextPage,
+            ),
+            SkillsScreen(onScrollDown: _previousPage, onScrollNext: _nextPage),
+            CertificationsScreen(
+              onScrollDown: _previousPage,
+              onScrollNext: _nextPage,
+            ),
+            ContactScreen(onScrollDown: _previousPage),
           ],
         ),
       ),

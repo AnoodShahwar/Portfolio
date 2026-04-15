@@ -3,12 +3,16 @@ import '../theme/colors.dart';
 
 class SkillsScreen extends StatelessWidget {
   final VoidCallback onScrollDown;
-  const SkillsScreen({super.key, required this.onScrollDown});
+  final VoidCallback onScrollNext;
+  const SkillsScreen({
+    super.key,
+    required this.onScrollDown,
+    required this.onScrollNext,
+  });
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Container(
       width: size.width,
       height: size.height,
@@ -22,29 +26,45 @@ class SkillsScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 20,
+            bottom: 8,
             left: 0,
             right: 0,
-            child: GestureDetector(
-              onTap: onScrollDown,
-              child: const Column(
-                children: [
-                  Text(
-                    'scroll down',
-                    style: TextStyle(
-                      color: Color(0x66F5A623),
-                      fontSize: 11,
-                      letterSpacing: 3,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: onScrollDown,
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 40),
+                    child: Text(
+                      'Back',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: 'diploma',
+                        letterSpacing: 3,
+                      ),
                     ),
                   ),
-                  SizedBox(height: 6),
-                  Icon(
-                    Icons.keyboard_arrow_down,
-                    color: Color(0x66F5A623),
-                    size: 20,
+                ),
+                GestureDetector(
+                  onTap: onScrollNext,
+                  child: const Padding(
+                    padding: EdgeInsets.only(right: 40),
+                    child: Text(
+                      'Next',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: 'diploma',
+                        letterSpacing: 3,
+                      ),
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
