@@ -510,8 +510,8 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
       '🚨',
       'ResQLink',
       'Emergency services finder for Pakistan. In progress.',
-      'PLANNED',
-      const Color(0xFFE55555),
+      'COMING SOON',
+      const Color.fromARGB(255, 40, 137, 194),
       techStack: 'Flutter · Dart · Firebase · Google Maps',
       role: 'Solo Developer',
       features: [

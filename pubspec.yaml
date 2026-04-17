@@ -64,6 +64,11 @@ flutter:
      - assets/depart.jpeg
      - assets/magnifi.jpeg
      - assets/nueplex.jpeg
+     - assets/ai.png
+     - assets/cisco.png
+     - assets/git.png
+     - assets/procom.png
+     - assets/booth.jpg
   fonts:
     - family: Pricedown
       fonts:

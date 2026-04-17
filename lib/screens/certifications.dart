@@ -7,7 +7,8 @@ class _Cert {
   final String title;
   final String issuer;
   final String date;
-  const _Cert(this.title, this.issuer, this.date);
+  final String imagePath;
+  const _Cert(this.title, this.issuer, this.date, this.imagePath);
 }
 
 class _Folder {
@@ -19,14 +20,34 @@ class _Folder {
 
 const _folders = [
   _Folder('COURSERA', 'Online Courses', [
-    _Cert('Introduction to Git\n& GitHub', 'Google / Coursera', '2024'),
-    _Cert('Start Writing Prompts\nLike a Pro', 'Coursera', '2024'),
+    _Cert(
+      'Introduction to Git\n& GitHub',
+      'Google / Coursera',
+      '2025',
+      'assets/git.png',
+    ),
+    _Cert(
+      'Start Writing Prompts\nLike a Pro',
+      'Coursera',
+      '2025',
+      'assets/ai.png',
+    ),
   ]),
   _Folder('CISCO', 'Networking', [
-    _Cert('Getting Started with\nCisco Packet Tracer', 'Cisco', '2024'),
+    _Cert(
+      'Getting Started with\nCisco Packet Tracer',
+      'Cisco',
+      '2026',
+      'assets/cisco.png',
+    ),
   ]),
   _Folder('COMPETITIONS', 'Events', [
-    _Cert('Procom \'26\nInterstellar Intelligence', 'FAST-NUCES', '2026'),
+    _Cert(
+      'Procom \'26\nInterstellar Intelligence',
+      'FAST-NUCES',
+      '2026',
+      'assets/procom.png',
+    ),
   ]),
 ];
 
@@ -264,8 +285,7 @@ class _CertificationsScreenState extends State<CertificationsScreen>
 
     // angle spread: evenly distribute between -25° and +25°
     double angleFor(int j) {
-      if (n == 1) return 0;
-      return -25 + (50 / (n - 1)) * j;
+      return 0;
     }
 
     // horizontal offset so cards spread out
@@ -412,7 +432,7 @@ class _FolderIcon extends StatelessWidget {
                   color: isHovered
                       ? kGold.withOpacity(0.7)
                       : const Color(0xFF444444),
-                  fontSize: 10,
+                  fontSize: 12,
                   letterSpacing: 1.5,
                   fontFamily: 'fonnts.com-FuturaLT-Light',
                 ),
@@ -498,9 +518,9 @@ class _CertCard extends StatelessWidget {
         duration: const Duration(milliseconds: 180),
         curve: Curves.easeOut,
         transform: Matrix4.translationValues(0, isHovered ? -18 : 0, 0),
-        width: 180,
-        height: 240,
-        padding: const EdgeInsets.all(16),
+        width: 520,
+
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: isHovered ? const Color(0xFF1A1200) : const Color(0xFF111111),
           border: Border.all(
@@ -511,60 +531,36 @@ class _CertCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // gold seal top right
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                width: 28,
-                height: 28,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: kGold.withOpacity(0.6), width: 1),
-                  color: kGold.withOpacity(0.08),
-                ),
-                child: Center(
-                  child: Text(
-                    '★',
-                    style: TextStyle(
-                      color: kGold.withOpacity(0.7),
-                      fontSize: 12,
-                    ),
-                  ),
+            SizedBox(
+              height: 212,
+              width: double.infinity,
+              child: ClipRect(
+                child: Image.asset(
+                  cert.imagePath,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  filterQuality: FilterQuality.high,
                 ),
               ),
             ),
-            const Spacer(),
-            // cert title
+            const SizedBox(height: 8),
             Text(
               cert.title,
               style: TextStyle(
                 color: isHovered ? kWhite : const Color(0xFFCCCCCC),
-                fontSize: 12,
+                fontSize: 10,
                 fontFamily: 'bankgothic-regular',
                 letterSpacing: 0.8,
-                height: 1.5,
+                height: 1.4,
               ),
             ),
-            const SizedBox(height: 10),
-            Container(height: 0.5, color: kGold.withOpacity(0.3)),
-            const SizedBox(height: 10),
+            const SizedBox(height: 4),
             Text(
               cert.issuer,
               style: TextStyle(
                 color: kGold.withOpacity(0.7),
                 fontSize: 10,
                 fontFamily: 'fonnts.com-FuturaLT-Light',
-                letterSpacing: 1,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              cert.date,
-              style: TextStyle(
-                color: kGold.withOpacity(0.35),
-                fontSize: 9,
-                letterSpacing: 1.5,
-                fontFamily: 'bankgothic-regular',
               ),
             ),
           ],
