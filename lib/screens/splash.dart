@@ -19,7 +19,7 @@ class SplashScreen extends StatelessWidget {
         children: [
           Center(
             child: Image.asset(
-              'assets/triptych.png',
+              'assets/pc_splash.png',
               width: size.width * 0.85,
               fit: BoxFit.contain,
             ),
@@ -75,37 +75,41 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
 
+          // GTA V styled PRESS START button
           Positioned(
             bottom: 40,
             child: GestureDetector(
               onTap: onScrollDown,
               child: Container(
-                width: 58,
+                width: 180,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: Colors.black,
-                  border: Border.all(color: Colors.white38, width: 3),
+                  gradient: const LinearGradient(
+                    colors: [kGold, kGold],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  border: Border.all(color: Colors.black, width: 3),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.amber.withOpacity(0.6),
+                      blurRadius: 12,
+                      spreadRadius: 2,
+                    ),
+                  ],
                 ),
-                child: const Icon(
-                  Icons.play_arrow,
-                  color: Colors.white54,
-                  size: 36,
+                child: const Center(
+                  child: Text(
+                    'PRESS START',
+                    style: TextStyle(
+                      fontFamily: 'Pricedown',
+                      color: Colors.black,
+                      fontSize: 22,
+                      letterSpacing: 2,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 4,
-            child: Text(
-              'Start',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'diploma',
-                color: kWhite,
-                fontSize: size.width * 0.02,
-                letterSpacing: 2,
               ),
             ),
           ),

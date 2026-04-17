@@ -69,6 +69,7 @@ flutter:
      - assets/git.png
      - assets/procom.png
      - assets/booth.jpg
+     - assets/pc_splash.png
   fonts:
     - family: Pricedown
       fonts:
