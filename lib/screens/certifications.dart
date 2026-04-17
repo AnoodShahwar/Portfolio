@@ -291,7 +291,7 @@ class _CertificationsScreenState extends State<CertificationsScreen>
     // horizontal offset so cards spread out
     double offsetFor(int j) {
       if (n == 1) return 0;
-      final spread = size.width * 0.28;
+      final spread = size.width * 0.22;
       return -spread + (spread * 2 / (n - 1)) * j;
     }
 
@@ -341,7 +341,7 @@ class _CertificationsScreenState extends State<CertificationsScreen>
         Align(
           alignment: const Alignment(0, -0.05),
           child: SizedBox(
-            height: 300,
+            height: 380,
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: List.generate(n, (j) {
@@ -349,7 +349,7 @@ class _CertificationsScreenState extends State<CertificationsScreen>
                 final dx = offsetFor(j);
                 return AnimatedBuilder(
                   animation: _cardAnims[j],
-                  builder: (_, __) {
+                  builder: (_, _) {
                     final t = _cardAnims[j].value;
                     return Transform.translate(
                       offset: Offset(dx * t, -20 * t),
@@ -518,7 +518,7 @@ class _CertCard extends StatelessWidget {
         duration: const Duration(milliseconds: 180),
         curve: Curves.easeOut,
         transform: Matrix4.translationValues(0, isHovered ? -18 : 0, 0),
-        width: 520,
+        width: 450,
 
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -532,7 +532,7 @@ class _CertCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 212,
+              height: 303,
               width: double.infinity,
               child: ClipRect(
                 child: Image.asset(
