@@ -36,7 +36,7 @@ class _ContactScreenState extends State<ContactScreen>
       label: 'LINKEDIN',
       icon: Icons.work,
       color: const Color(0xFF0077B5),
-      url: 'https://linkedin.com/in/anoodshahwar',
+      url: 'https://www.linkedin.com/in/anood-shahwar-5635922aa/',
     ),
     _ContactCard(
       label: 'RESUME',
