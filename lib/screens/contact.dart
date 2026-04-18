@@ -112,7 +112,7 @@ class _ContactScreenState extends State<ContactScreen>
       return;
     }
     final uri = Uri.parse(url);
-    await launchUrl(uri, mode: LaunchMode.platformDefault);
+    await launchUrl(uri, webOnlyWindowName: '_blank');
   }
 
   @override
