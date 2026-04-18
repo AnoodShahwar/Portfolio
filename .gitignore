@@ -30,10 +30,14 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-# /build/
+
+# Build — ignore everything except web build
+/build/*/
+!/build/web/
+
 /coverage/
 
-# Symbolication related
+# Symbolization related
 app.*.symbols
 
 # Obfuscation related
