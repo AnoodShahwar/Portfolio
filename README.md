@@ -61,14 +61,13 @@ A fully GTA-themed interactive developer portfolio because a plain white resume 
 
 **Anood Shahwar**: BSSE Student @ University of Karachi
 
-[![GitHub](https://img.shields.io/badge/GitHub-AnoodShahwar-black?style=for-the-badge&logo=github)](https://github.com/AnoodShahwar)
+[![Gmail](https://img.shields.io/badge/Gmail-anoodshahwar@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:anoodshahwar@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com)
 
 ---
 
 <div align="center">
 
-*⭐ If you liked this, leave a star. It's free and it makes my day.*
 
 **— WANTED: Dead or Alive —**
 *Flutter Dev. Last seen shipping projects.*
