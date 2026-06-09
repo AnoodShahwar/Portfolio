@@ -43,7 +43,7 @@ class _ContactScreenState extends State<ContactScreen>
       icon: Icons.description_outlined,
       color: kGold,
       url:
-          'https://drive.google.com/file/d/1fDlwgs82fhFvwteTgThdhVNSU_wT1o-O/view?usp=sharing',
+          'https://drive.google.com/file/d/1CNChvKes027bvhDoewnTiRjr6qsaAI-M/view?usp=sharing',
       isResume: false,
     ),
   ];
