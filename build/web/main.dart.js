@@ -63270,7 +63270,7 @@ if(r!=null)r.M(s.ge7())
 s.aT$=null
 s.aM()}}
 A.r7.prototype={
-al(){return new A.wC(A.c([new A.mF("GMAIL",B.AB,B.yR,"https://mail.google.com/mail/?view=cm&to=anoodshahwar@gmail.com",!1),new A.mF("GITHUB",B.AA,B.aE,"https://github.com/AnoodShahwar",!1),new A.mF("LINKEDIN",B.AG,B.z2,"https://linkedin.com/in/anood-shahwar-5635922aa",!1),new A.mF("RESUME",B.AH,B.j,"https://drive.google.com/file/d/1CNChvKes027bvhDoewnTiRjr6qsaAI-M/view?usp=sharing",!1)],t.es),null,null)}}
+al(){return new A.wC(A.c([new A.mF("GMAIL",B.AB,B.yR,"https://mail.google.com/mail/?view=cm&to=anoodshahwar@gmail.com",!1),new A.mF("GITHUB",B.AA,B.aE,"https://github.com/AnoodShahwar",!1),new A.mF("LINKEDIN",B.AG,B.z2,"https://linkedin.com/in/anood-shahwar-5635922aa",!1),new A.mF("RESUME",B.AH,B.j,"https://drive.google.com/file/d/1fDlwgs82fhFvwteTgThdhVNSU_wT1o-O/view?usp=sharing",!1)],t.es),null,null)}}
 A.wC.prototype={
 aA(){var s,r,q,p,o,n,m,l,k=this,j=null
 k.aX()
