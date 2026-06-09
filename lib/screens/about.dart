@@ -279,8 +279,7 @@ class _AboutScreenState extends State<AboutScreen> {
           size,
           icon: Icons.layers,
           title: 'Master Flutter State Management',
-          desc:
-              'Deep diving into Riverpod and Bloc. Clean architecture or bust.',
+          desc: 'Exploring Provider for clean and scalable app architecture.',
           status: 'IN PROGRESS',
         ),
         const SizedBox(height: 40),
@@ -289,7 +288,7 @@ class _AboutScreenState extends State<AboutScreen> {
           icon: Icons.storage,
           title: 'Learn Backend Development',
           desc:
-              'Leveling up from Firebase into Node.js and Supabase territory.',
+              'Building on Firebase experience and exploring backend concepts gradually.',
           status: 'IN PROGRESS',
         ),
         const SizedBox(height: 40),
@@ -298,7 +297,7 @@ class _AboutScreenState extends State<AboutScreen> {
           icon: Icons.sports_esports,
           title: 'Publish a Game',
           desc:
-              'Ship something to Play Store or itch.io. Completion is the real unlock.',
+              'Finishing and publishing my current game to itch.io or the Play Store.',
           status: 'SIDE MISSION',
         ),
       ],

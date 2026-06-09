@@ -40,6 +40,12 @@ const _folders = [
       '2026',
       'assets/cisco.png',
     ),
+    _Cert(
+      'Networking Basics',
+      'Cisco Networking Academy',
+      '2026',
+      'assets/networking.png',
+    ),
   ]),
   _Folder('COMPETITIONS', 'Events', [
     _Cert(
