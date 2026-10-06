@@ -150,105 +150,13 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
           ),
         ),
         const SizedBox(height: 14),
-        ...projects.map((p) => _dossierCard(p)),
-      ],
-    );
-  }
-
-  Widget _dossierCard(_Project p) {
-    return StatefulBuilder(
-      builder: (context, setCardState) {
-        bool hovered = false;
-        return MouseRegion(
-          onEnter: (_) => setCardState(() => hovered = true),
-          onExit: (_) => setCardState(() => hovered = false),
-          child: GestureDetector(
+        ...projects.map(
+          (p) => _HoverCard(
+            project: p,
             onTap: () => setState(() => _selected = p),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 150),
-              margin: const EdgeInsets.only(bottom: 10),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: hovered ? kGold : const Color(0x44F5A623),
-                  width: 0.5,
-                ),
-                color: hovered
-                    ? const Color(0x15F5A623)
-                    : const Color(0x0AFFFFFF),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 36,
-                    height: 42,
-                    decoration: BoxDecoration(
-                      color: hovered
-                          ? const Color(0x33F5A623)
-                          : const Color(0x1AF5A623),
-                      border: Border.all(
-                        color: const Color(0x44FFFFFF),
-                        width: 0.5,
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(p.icon, style: const TextStyle(fontSize: 18)),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          p.name,
-                          style: TextStyle(
-                            color: hovered ? kGold : kWhite,
-                            fontSize: 15,
-                            fontFamily: 'bankgothic-regular',
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 3),
-                        Text(
-                          p.desc,
-                          style: const TextStyle(
-                            color: Color(0x88FFFFFF),
-                            fontSize: 12,
-                            fontFamily: 'fonnts.com-FuturaLT-Light',
-                            height: 1.4,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 6,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: p.stampColor, width: 0.5),
-                    ),
-                    child: Text(
-                      p.status,
-                      style: TextStyle(
-                        color: p.stampColor,
-                        fontSize: 9.3,
-                        letterSpacing: 1,
-                        fontFamily: 'fonnts.com-FuturaLT-Light',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 
@@ -597,9 +505,9 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
       techStack: 'Unity 6 · C#',
       role: 'Solo Developer',
       features: [
-        'Medieval night village; level designed and built from scratch',
-        'Enemy AI with NavMesh: roars, chases and attacks · Health system',
-        'Atmospheric night lighting · Cinemachine camera switching',
+        'Medieval night village, level designed and built from scratch',
+        'Enemy AI with NavMesh: roars, chases and attacks, health system',
+        'Atmospheric night lighting, Cinemachine camera switching',
       ],
       github: '',
       videoUrl:
@@ -622,6 +530,112 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
     ),
   ];
 }
+
+// ─── Hover Card ───────────────────────────────────────────────────────────────
+
+class _HoverCard extends StatefulWidget {
+  final _Project project;
+  final VoidCallback onTap;
+  const _HoverCard({required this.project, required this.onTap});
+
+  @override
+  State<_HoverCard> createState() => _HoverCardState();
+}
+
+class _HoverCardState extends State<_HoverCard> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = widget.project;
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          margin: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: _hovered ? kGold : const Color(0x44F5A623),
+              width: 0.5,
+            ),
+            color: _hovered ? const Color(0x15F5A623) : const Color(0x0AFFFFFF),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 36,
+                height: 42,
+                decoration: BoxDecoration(
+                  color: _hovered
+                      ? const Color(0x33F5A623)
+                      : const Color(0x1AF5A623),
+                  border: Border.all(
+                    color: const Color(0x44FFFFFF),
+                    width: 0.5,
+                  ),
+                ),
+                child: Center(
+                  child: Text(p.icon, style: const TextStyle(fontSize: 18)),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      p.name,
+                      style: TextStyle(
+                        color: _hovered ? kGold : kWhite,
+                        fontSize: 15,
+                        fontFamily: 'bankgothic-regular',
+                        letterSpacing: 2,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      p.desc,
+                      style: const TextStyle(
+                        color: Color(0x88FFFFFF),
+                        fontSize: 12,
+                        fontFamily: 'fonnts.com-FuturaLT-Light',
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  border: Border.all(color: p.stampColor, width: 0.5),
+                ),
+                child: Text(
+                  p.status,
+                  style: TextStyle(
+                    color: p.stampColor,
+                    fontSize: 9.3,
+                    letterSpacing: 1,
+                    fontFamily: 'fonnts.com-FuturaLT-Light',
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─── Project Model ────────────────────────────────────────────────────────────
 
 class _Project {
   final String icon,
