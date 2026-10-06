@@ -228,7 +228,7 @@ class _AboutScreenState extends State<AboutScreen> {
               const SizedBox(height: 20),
               _infoRow('Location', 'Karachi, Pakistan'),
               _infoRow('University', 'UoK-UBIT'),
-              _infoRow('Semester', '5th'),
+              _infoRow('Semester', '6th'),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(right: 40),
@@ -268,11 +268,11 @@ class _AboutScreenState extends State<AboutScreen> {
         const SizedBox(height: 35),
         _missionItem(
           size,
-          icon: Icons.star,
-          title: 'Land a Flutter Internship',
+          icon: Icons.auto_awesome,
+          title: 'Integrate AI into Flutter Apps',
           desc:
-              'Actively hunting for Flutter internships in Karachi. Target: June 2026.',
-          status: 'ACTIVE',
+              'Exploring how to wire LLM APIs into mobile apps to build smarter, more useful products.',
+          status: 'IN PROGRESS',
         ),
         const SizedBox(height: 40),
         _missionItem(
@@ -396,7 +396,7 @@ class _AboutScreenState extends State<AboutScreen> {
         _miscRow(
           size,
           'CREATIVE ASSETS',
-          'I spend my idle time doing art, including traditional painting, sketching, and coloring. I also enjoy photography and video editing to keep my creative side sharp',
+          'I spend my idle time doing art, including traditional painting, sketching, and coloring. I also enjoy crochet, photography and video editing to keep my creative side sharp',
         ),
         _miscRow(
           size,

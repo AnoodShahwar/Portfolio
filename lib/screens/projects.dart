@@ -156,76 +156,99 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
   }
 
   Widget _dossierCard(_Project p) {
-    return GestureDetector(
-      onTap: () => setState(() => _selected = p),
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 10),
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          border: Border.all(color: const Color(0x44F5A623), width: 0.5),
-          color: const Color(0x0AFFFFFF),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 36,
-              height: 42,
+    return StatefulBuilder(
+      builder: (context, setCardState) {
+        bool hovered = false;
+        return MouseRegion(
+          onEnter: (_) => setCardState(() => hovered = true),
+          onExit: (_) => setCardState(() => hovered = false),
+          child: GestureDetector(
+            onTap: () => setState(() => _selected = p),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              margin: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: const Color(0x1AF5A623),
-                border: Border.all(color: const Color(0x44FFFFFF), width: 0.5),
+                border: Border.all(
+                  color: hovered ? kGold : const Color(0x44F5A623),
+                  width: 0.5,
+                ),
+                color: hovered
+                    ? const Color(0x15F5A623)
+                    : const Color(0x0AFFFFFF),
               ),
-              child: Center(
-                child: Text(p.icon, style: const TextStyle(fontSize: 18)),
-              ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    p.name,
-                    style: const TextStyle(
-                      color: kWhite,
-                      fontSize: 15,
-                      fontFamily: 'bankgothic-regular',
-                      letterSpacing: 2,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    width: 36,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: hovered
+                          ? const Color(0x33F5A623)
+                          : const Color(0x1AF5A623),
+                      border: Border.all(
+                        color: const Color(0x44FFFFFF),
+                        width: 0.5,
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(p.icon, style: const TextStyle(fontSize: 18)),
                     ),
                   ),
-                  const SizedBox(height: 3),
-                  Text(
-                    p.desc,
-                    style: const TextStyle(
-                      color: Color(0x88FFFFFF),
-                      fontSize: 12,
-                      fontFamily: 'fonnts.com-FuturaLT-Light',
-                      height: 1.4,
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          p.name,
+                          style: TextStyle(
+                            color: hovered ? kGold : kWhite,
+                            fontSize: 15,
+                            fontFamily: 'bankgothic-regular',
+                            letterSpacing: 2,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          p.desc,
+                          style: const TextStyle(
+                            color: Color(0x88FFFFFF),
+                            fontSize: 12,
+                            fontFamily: 'fonnts.com-FuturaLT-Light',
+                            height: 1.4,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 2,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: p.stampColor, width: 0.5),
+                    ),
+                    child: Text(
+                      p.status,
+                      style: TextStyle(
+                        color: p.stampColor,
+                        fontSize: 9.3,
+                        letterSpacing: 1,
+                        fontFamily: 'fonnts.com-FuturaLT-Light',
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: 8),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-              decoration: BoxDecoration(
-                border: Border.all(color: p.stampColor, width: 0.5),
-              ),
-              child: Text(
-                p.status,
-                style: TextStyle(
-                  color: p.stampColor,
-                  fontSize: 9.3,
-                  letterSpacing: 1,
-                  fontFamily: 'fonnts.com-FuturaLT-Light',
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -403,6 +426,47 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                       ],
                     ),
                   ],
+                  if (p.videoUrl.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          width: 100,
+                          child: Text(
+                            'GAMEPLAY',
+                            style: TextStyle(
+                              color: kGoldDim,
+                              fontSize: 11,
+                              letterSpacing: 1.5,
+                              fontFamily: 'fonnts.com-FuturaLT-Light',
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () async {
+                            final uri = Uri.parse(p.videoUrl);
+                            if (await canLaunchUrl(uri)) {
+                              await launchUrl(
+                                uri,
+                                mode: LaunchMode.externalApplication,
+                              );
+                            }
+                          },
+                          child: const Text(
+                            'Watch Gameplay →',
+                            style: TextStyle(
+                              color: kGold,
+                              fontSize: 12,
+                              fontFamily: 'fonnts.com-FuturaLT-Light',
+                              decoration: TextDecoration.underline,
+                              decorationColor: kGold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                   const SizedBox(height: 16),
                   GestureDetector(
                     onTap: () => setState(() => _selected = null),
@@ -479,8 +543,8 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
     _Project(
       '🎓',
       'UBIT Student Hub',
-      'Campus app. Full 5-screen Flutter UI build.',
-      'UI ONLY',
+      '5-screen campus app. Custom UI components, navigation architecture and layout system built from scratch.',
+      'UI BUILD',
       const Color(0xFF888888),
       techStack: 'Flutter · Dart',
       role: 'Solo Developer',
@@ -507,17 +571,17 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
       github: 'https://github.com/AnoodShahwar/Portfolio',
     ),
     _Project(
-      '🚨',
-      'ResQLink',
-      'Emergency services finder for Pakistan. In progress.',
+      '🔁',
+      'Cuedo',
+      'Offline phone automation. Set rules, let your phone handle the rest.',
       'COMING SOON',
-      const Color.fromARGB(255, 40, 137, 194),
-      techStack: 'Flutter · Dart · Firebase · Google Maps',
+      const Color(0xFF2889C2),
+      techStack: 'Flutter · Dart · Kotlin · SQLite · OpenStreetMap',
       role: 'Solo Developer',
       features: [
-        'Nearby hospital finder',
-        'SOS via WhatsApp/SMS',
-        'Live location tracking',
+        '"When... then..." rule builder for phone automation',
+        'Triggers: location, time of day, charger connection',
+        'Runs fully offline — no account, no internet needed',
       ],
       github: '',
     ),
@@ -525,25 +589,50 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 
   List<_Project> _unityProjects() => [
     _Project(
-      '🎮',
-      'Ciphered Exit',
-      '3D escape room game built from scratch. Project-based learning in Unity & C#.',
-      'ONGOING',
-      const Color(0xFFE55555),
-      techStack: 'Unity · C#',
+      '⚔️',
+      'The Mysterious Knight',
+      'A 3D Unity game set in a medieval village at night, where you face an enemy that roars, chases and attacks.',
+      'SHIPPED',
+      const Color(0xFF8DBB6A),
+      techStack: 'Unity 6 · C#',
       role: 'Solo Developer',
       features: [
-        '3D environment design',
-        'Puzzle mechanics',
-        'Project-based learning',
+        'Medieval night village; level designed and built from scratch',
+        'Enemy AI with NavMesh: roars, chases and attacks · Health system',
+        'Atmospheric night lighting · Cinemachine camera switching',
       ],
-      github: 'https://github.com/AnoodShahwar/CipheredExit',
+      github: '',
+      videoUrl:
+          'https://drive.google.com/file/d/1EUuhih-daWBhAnH6E9S3lGVgCwe3RRNm/view?usp=sharing',
+    ),
+    _Project(
+      '👁️',
+      'Static',
+      'First-person horror. A cabin in a storm, a figure that only moves when you look away.',
+      'IN PROGRESS',
+      const Color(0xFF888888),
+      techStack: 'Unity 6 · C#',
+      role: 'Solo Developer',
+      features: [
+        'Figure AI that only moves when the player looks away, freezes on eye contact',
+        'Story told entirely through props and environment, no dialogue or text',
+        'Scripted scares, item puzzles and a complete ending, about 10 min playtime',
+      ],
+      github: '',
     ),
   ];
 }
 
 class _Project {
-  final String icon, name, desc, status, techStack, role, github, liveUrl;
+  final String icon,
+      name,
+      desc,
+      status,
+      techStack,
+      role,
+      github,
+      liveUrl,
+      videoUrl;
   final Color stampColor;
   final List<String> features;
   const _Project(
@@ -557,5 +646,6 @@ class _Project {
     required this.features,
     required this.github,
     this.liveUrl = '',
+    this.videoUrl = '',
   });
 }

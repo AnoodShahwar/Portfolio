@@ -24,7 +24,8 @@ class _ContactScreenState extends State<ContactScreen>
       label: 'GMAIL',
       icon: Icons.email,
       color: const Color(0xFFEA4335),
-      url: 'https://mail.google.com/mail/?view=cm&to=anoodshahwar@gmail.com',
+      url:
+          'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCKHQdcGZTLjZRDmgCzPjLTTfMcVxKpFZxtDvWzCLvmMlxKhDzlgBGbZcWhPDzFfmjBskpcL',
     ),
     _ContactCard(
       label: 'GITHUB',
@@ -36,14 +37,14 @@ class _ContactScreenState extends State<ContactScreen>
       label: 'LINKEDIN',
       icon: Icons.work,
       color: const Color(0xFF0077B5),
-      url: 'https://linkedin.com/in/anood-shahwar-5635922aa',
+      url: 'https://www.linkedin.com/in/anood-shahwar-5635922aa',
     ),
     _ContactCard(
       label: 'RESUME',
       icon: Icons.description_outlined,
       color: kGold,
       url:
-          'https://drive.google.com/file/d/1fDlwgs82fhFvwteTgThdhVNSU_wT1o-O/view?usp=sharing',
+          'https://drive.google.com/file/d/1q9Ct6m7HkQZlZh_zFaaI_uOb4U1KgEaj/view?usp=sharing',
       isResume: false,
     ),
   ];
